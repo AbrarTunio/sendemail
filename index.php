@@ -18,15 +18,15 @@ function sendEmail( $email ){
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'mail.time.org.pk';                     //Set the SMTP server to send through
+        $mail->Host       = $yourhost;                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'abrar@time.org.pk';                     //SMTP username
-        $mail->Password   = 'MainNahiBataonGa';                               //SMTP password
+        $mail->Username   = $senderEmail;                     //SMTP username
+        $mail->Password   = $senderPassword;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mail->setFrom('abrar@time.org.pk', 'Your Friend');
+        $mail->setFrom($senderEmail, 'Your Friend');
         $mail->addAddress($email, 'Baseer');     //Add a recipient
         // $mail->addAddress('ellen@example.com');               //Name is optional
         // $mail->addReplyTo('info@example.com', 'Information');
@@ -40,7 +40,7 @@ function sendEmail( $email ){
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Greetings From Abrar';
-        $mail->Body    = 'Your Password is 123456';
+        $mail->Body    = 'Your Password is ******';
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
         $mail->send();
